@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  <style>
+    .branding-below {
+      bottom: 54px;
+      top: 0;
+    }
+
+    .branding-text {
+      left: 7px;
+      position: relative;
+      top: 3px;
+    }
+
+    .logo {
+      vertical-align: middle;
+    }
+
+    .width-100 {
+      width: 100%;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    #submit-subject {
+      margin-bottom: 10px;
+    }
+
+    #response-step {
+      display: inline;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script>
+    function downloadQRCode() {
+      $('#qrcodeDownload').prop('href', ($("#qrcode img").prop('src')));
+      $('#qrcodeDownload').prop('download', 'qrcode.png');
+    }
+    $
+    $(function () {
+      $('#qrcodeDownload').click(downloadQRCode);
+      var formURL = '<?!= formURL ?>';
+      console.log(formURL);
+      $("#qrcode").html('');
+      new QRCode($("#qrcode")[0], formURL);
+      $('#qrcode-url').html(formURL);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="sidebar branding-below">
+    <div id="qrcode"></div>
+    <br>
+    <form>
+      <div class="block">
+        <a id="qrcodeDownload" href="javascript:;">Save image...</a>
+      </div>
+      <div class="block">
+        <span id="qrcode-url"></span>
+      </div>
+    </form>
+  </div>
+
+  <div class="sidebar bottom">
+    <img alt="Add-on logo" class="logo" width="25"
+      src="https://g-suite-documentation-images.firebaseapp.com/images/newFormNotificationsicon.png">
+    <span class="gray branding-text">Simple QR Code Generator</span>
+  </div>
+</body>
+
+</html>
